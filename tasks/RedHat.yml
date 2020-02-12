@@ -8,6 +8,20 @@
     gpgkey: https://www.mongodb.org/static/pgp/server-{{mongodb_ver}}.asc
     gpgcheck: yes
     enabled: yes
+  when: ansible_distribution != 'Amazon'
+  
+- name: Install the repository RPM
+  yum_repository:
+    name: mongodb-org-{{mongodb_ver}}
+    description: mongodb {{mongodb_ver}}
+    file: mongodb-org-{{mongodb_ver}}
+    baseurl: https://repo.mongodb.org/yum/redhat/7/mongodb-org/{{mongodb_ver}}/x86_64/
+    gpgkey: https://www.mongodb.org/static/pgp/server-{{mongodb_ver}}.asc
+    gpgcheck: yes
+    enabled: yes
+  when: ansible_distribution == 'Amazon'
+
+
 
 - name: Install MongoDB{{mongodb_ver}}
   yum: 
