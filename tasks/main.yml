@@ -14,6 +14,9 @@
     src: mongod.conf
     dest: /etc/
 
+- name: Clean
+  shell: rm -rf /data/mongo/*
+
 - name: Start MongoDB
   service:
     name:  mongod
@@ -45,19 +48,6 @@
   with_items:
     - {src: /etc/mongod.conf,dest: /data/config/mongod.conf}  
     - {src: /var/log/mongodb,dest: /data/logs/mongodb}   # 目录待确定
-
-
-
-- name: Create credentials Folder
-  file:
-    path: /credentials
-    state: directory
-
-- name: Write Databases Password
-  template:
-    src: password.txt.jinja2
-    dest: /credentials/password.txt
-    mode: 644
 
 
 - name: Check MongoDB Version
