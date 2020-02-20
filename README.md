@@ -1,7 +1,7 @@
-Ansible Role: xxx
+Ansible Role: mongodb
 =========
 
-在CentOS或者Ubuntu服务器上安装和配置xxxx 或xxx
+在CentOS或者Ubuntu服务器上安装和配置mongodb
 
 Requirements
 ------------
@@ -11,7 +11,7 @@ Requirements
 ```
 - hosts: all
   roles:
-    - role: role_xxx
+    - role: role_mongodb
       become: yes
 ```
 
@@ -22,7 +22,8 @@ Role Variables
 
 ```
 
-
+mongodb_version: "4.0"    # 支持版本  3.0  3.2 3.4 3.6  4.0 
+mongodb_root_password: "123456" 
 
 ```
 
@@ -42,13 +43,13 @@ Example Playbook
   vars_files:
     - vars/main.yml
   roles:
-    - { role: role_xxx }
+    - { role: role_mongodb }
 ```
 
 `vars/main.yml` :
 ```
-
-
+mongodb_version: "4.0"
+mongodb_root_password: "123456" 
 
 ```
 
