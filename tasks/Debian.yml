@@ -7,6 +7,7 @@
   apt_repository:
     repo: deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu {{ansible_distribution_release}}/mongodb-org/{{mongodb_version}} multiverse
     filename: mongodb-org-{{mongodb_version}}
+    update_cache: yes
 
 - name: Install Mongodb 
   apt:
