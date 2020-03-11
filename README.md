@@ -1,7 +1,7 @@
 Ansible Role: mongodb
 =========
 
-本 Role 在CentOS或者Ubuntu服务器上安装和配置 MongoDB。
+本 Role 在CentOS或者Ubuntu服务器上安装和配置 MongoDB。本项目基于MongoDB官方提供的 [repo](http://repo.mongodb.org/) 安装
 
 ## Requirements
 
