@@ -4,10 +4,8 @@
     state: present
 
 - name: Import Mongodb Repo
-  apt_repository:
-    repo: deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu {{ansible_distribution_release}}/mongodb-org/{{mongodb_version}} multiverse
-    filename: mongodb-org-{{mongodb_version}}
-    update_cache: yes
+  shell: |
+    echo deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu {{ansible_distribution_release}}/mongodb-org/{{mongodb_version}} multiverse > /etc/apt/sources.list.d/mongodb-org-{{mongodb_version}}
 
 - name: Install Mongodb 
   apt:
