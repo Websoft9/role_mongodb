@@ -11,6 +11,7 @@
   apt:
     name: mongodb-org
     update_cache: yes
+    allow_unauthenticated: yes
 
 - name: mongodb tmpfiles.d
   shell: |
