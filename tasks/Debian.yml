@@ -5,7 +5,7 @@
 
 - name: Import Mongodb Repo
   shell: |
-    echo deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu {{ansible_distribution_release}}/mongodb-org/{{mongodb_version}} multiverse > /etc/apt/sources.list.d/mongodb-org-{{mongodb_version}}
+    echo deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu {{ansible_distribution_release}}/mongodb-org/{{mongodb_version}} multiverse > /etc/apt/sources.list.d/mongodb-org-{{mongodb_version}}.list
 
 - name: Install Mongodb 
   apt:
