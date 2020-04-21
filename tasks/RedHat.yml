@@ -21,13 +21,10 @@
     enabled: yes
   when: ansible_distribution == 'Amazon'
 
-
-
 - name: Install MongoDB{{mongodb_version}}
   yum: 
     name: [mongodb-org]
     state: latest
-
 
 - name: Create Databases Directory
   file:
@@ -35,3 +32,8 @@
     state: directory
     owner: mongod
     group: mongod
+
+- name: Add soft link for Mongod service
+  shell: |
+    ln -s /usr/lib/systemd/system/mongod.service  /usr/lib/systemd/system/mongo.service
+    ln -s /usr/lib/systemd/system/mongod.service  /usr/lib/systemd/system/mongodb.service
