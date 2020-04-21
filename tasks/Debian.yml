@@ -24,3 +24,8 @@
     state: directory
     owner: mongodb
     group: mongodb
+ 
+- name: Add soft link for Mongod service
+  shell: |
+    ln -s /lib/systemd/system/mongod.service  /lib/systemd/system/mongo.service
+    ln -s /lib/systemd/system/mongod.service  /lib/systemd/system/mongodb.service
