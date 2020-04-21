@@ -49,8 +49,13 @@
     - {src: /etc/mongod.conf,dest: /data/config/mongod.conf}  
     - {src: /var/log/mongodb,dest: /data/logs/mongodb}   # 目录待确定
 
-
-- name: Check MongoDB Version
+# display version and service state of components
+- name: Get MongoDB version
   shell: mongo --version
-  register: mongo_ver
-  notify: MongoDB Version
+  register: check_mongodb_version
+  notify: check_mongodb_version
+
+- name: Check MongoDB Service
+  shell: systemctl status mongod | grep Active*
+  register: check_mongodb_service
+  notify: check_mongodb_service
