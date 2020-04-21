@@ -47,7 +47,7 @@
     state: link
   with_items:
     - {src: /etc/mongod.conf,dest: /data/config/mongod.conf}  
-    - {src: /var/log/mongodb,dest: /data/logs/mongodb}   # 目录待确定
+    - {src: /var/log/mongodb,dest: /data/logs/mongodb}
 
 # display version and service state of components
 - name: Get MongoDB version
