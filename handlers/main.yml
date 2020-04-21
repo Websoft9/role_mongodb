@@ -1,3 +1,7 @@
-- name: MongoDB Version
+- name: check_mongodb_version
   debug:
-    var: mongo_ver.stdout_lines[0]
+    var: check_mongodb_version.stdout_lines[0]
+    
+- name: check_mongodb_service
+  debug:
+    var: check_mongodb_service.stdout
