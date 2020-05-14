@@ -25,7 +25,14 @@
   yum: 
     name: [mongodb-org]
     state: latest
-
+    
+- name: Create Databases Directory
+  file:
+    path: /data/mongo
+    state: directory
+    owner: mongod
+    group: mongod
+    
 - name: Add soft link for Mongod service
   shell: |
     ln -sb /usr/lib/systemd/system/mongod.service  /usr/lib/systemd/system/mongo.service
