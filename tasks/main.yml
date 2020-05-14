@@ -33,6 +33,7 @@
     password: '{{mongodb_root_password}}'
     roles: root
     state: present
+    update_password: always
 
 - name: Enable MongoDB authorization
   lineinfile:
