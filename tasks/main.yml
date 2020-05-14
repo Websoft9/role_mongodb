@@ -40,14 +40,10 @@
 - name: restart MongoDB
   service: name=mongod state=restarted enabled=yes
 
-- name: Create a MongoDB symbolic link
-  file:
-    src: '{{item.src}}'
-    dest: '{{item.dest}}'
-    state: link
-  with_items:
-    - {src: /etc/mongod.conf,dest: /data/config/mongod.conf}  
-    - {src: /var/log/mongodb,dest: /data/logs/mongodb}
+- name: Add soft link for Mongod directory
+  shell: |
+    ln -sb /etc/mongod.conf  /data/config/mongod.conf
+    ln -sb /var/log/mongodb  /data/logs/mongodb
 
 # display version and service state of components
 - name: Get MongoDB version
