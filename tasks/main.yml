@@ -6,6 +6,10 @@
     state: directory
     owner: mongodb
     group: mongodb
+
+- name: Install pymongo for Ansible MongoDB module
+  pip:
+    name: pymongo
     
 #2 install by OS family    
 - import_tasks: RedHat.yml
@@ -15,9 +19,6 @@
   when: ansible_os_family == 'Debian'
 
 #3 configure 
-- name: Install pymongo for Ansible MongoDB module
-  pip:
-    name: pymongo
 
 - name: Copy MongoDB Configuration
   copy: 
