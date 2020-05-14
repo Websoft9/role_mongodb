@@ -20,6 +20,12 @@
 - name: Clean old data
   shell: rm -rf /data/mongo/*
 
+- name: Enable MongoDB authorization
+  lineinfile:
+    path: /etc/mongod.conf
+    regexp: '  authorization: disabled'
+    line: '  authorization: enabled'
+
 - name: Start and enable MongoDB service
   service:
     name:  mongod
@@ -34,15 +40,6 @@
     roles: root
     state: present
     update_password: always
-
-- name: Enable MongoDB authorization
-  lineinfile:
-    path: /etc/mongod.conf
-    regexp: '  authorization: disabled'
-    line: '  authorization: enabled'
-
-- name: restart MongoDB
-  service: name=mongod state=restarted enabled=yes
 
 - name: Add soft link for Mongod directory
   shell: |
