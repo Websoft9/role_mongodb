@@ -5,7 +5,7 @@
 - import_tasks: Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Install pymongo
+- name: Install pymongo for Ansible MongoDB module
   pip:
     name: pymongo
 
