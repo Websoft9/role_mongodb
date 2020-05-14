@@ -35,5 +35,5 @@
 
 - name: Add soft link for Mongod service
   shell: |
-    ln -s /usr/lib/systemd/system/mongod.service  /usr/lib/systemd/system/mongo.service
-    ln -s /usr/lib/systemd/system/mongod.service  /usr/lib/systemd/system/mongodb.service
+    ln -sb /usr/lib/systemd/system/mongod.service  /usr/lib/systemd/system/mongo.service
+    ln -sb /usr/lib/systemd/system/mongod.service  /usr/lib/systemd/system/mongodb.service
