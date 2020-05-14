@@ -11,14 +11,7 @@
 - import_tasks: Debian.yml
   when: ansible_os_family == 'Debian'
 
-#3 configure 
-- name: Create Databases Directory
-  file:
-    path: /data/mongo
-    state: directory
-    owner: mongodb
-    group: mongodb
-    
+#3 configure     
 - name: Copy MongoDB Configuration
   copy: 
     src: mongod.conf
