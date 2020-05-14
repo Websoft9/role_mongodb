@@ -1,12 +1,5 @@
 ---
 #1 pre-installation
-- name: Create Databases Directory
-  file:
-    path: /data/mongo
-    state: directory
-    owner: mongodb
-    group: mongodb
-
 - name: Install pymongo for Ansible MongoDB module
   pip:
     name: pymongo
@@ -19,7 +12,13 @@
   when: ansible_os_family == 'Debian'
 
 #3 configure 
-
+- name: Create Databases Directory
+  file:
+    path: /data/mongo
+    state: directory
+    owner: mongodb
+    group: mongodb
+    
 - name: Copy MongoDB Configuration
   copy: 
     src: mongod.conf
