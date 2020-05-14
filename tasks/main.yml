@@ -37,7 +37,7 @@
     database: admin
     name: root
     password: '{{mongodb_root_password}}'
-    roles: root
+    roles: 'dbAdminAnyDatabase'
     state: present
     update_password: always
 
