@@ -25,10 +25,10 @@
     src: mongod.conf
     dest: /etc/
 
-- name: Clean
+- name: Clean old data
   shell: rm -rf /data/mongo/*
 
-- name: Start MongoDB
+- name: Start and enable MongoDB service
   service:
     name:  mongod
     enabled: yes 
