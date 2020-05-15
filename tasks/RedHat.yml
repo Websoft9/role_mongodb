@@ -1,14 +1,21 @@
 ---
-- name: Install the repository RPM
+- set fact:
+  mongodb_baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/{{mongodb_version}}/x86_64/
+  when: ansible_distribution != 'Amazon'
+
+- set fact:
+  mongodb_baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-org/{{mongodb_version}}/x86_64/
+  when: ansible_distribution == 'Amazon'
+  
+- name: Yum Install the MongdoDB -{{mongodb_server}}-{{mongodb_version}}
   yum_repository:
-    name: mongodb-org-{{mongodb_version}}
-    description: mongodb {{mongodb_version}}
+    name: mongodb-{{mongodb_server}}-{{mongodb_version}}
+    description: mongodb {{mongodb_server}} {{mongodb_version}}
     file: mongodb-org-{{mongodb_version}}
     baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/{{mongodb_version}}/x86_64/
     gpgkey: https://www.mongodb.org/static/pgp/server-{{mongodb_version}}.asc
     gpgcheck: yes
     enabled: yes
-  when: ansible_distribution != 'Amazon'
   
 - name: Install the repository RPM
   yum_repository:
