@@ -36,7 +36,7 @@ Ansible Role: mongodb
 | mongodb_version | [ 10.1, 10.2, 10.3, 10.4 ] | 字符串 |是|
 | mongodb_root_password | [ "123456"] | 字符串 |是|
 | mongodb_remote | [ "true", "false" ] | 字符串 |是|
-| mongodb_server | community | enterprise | 字符串 |否|
+| mongodb_server | [community,enterprise] | 字符串 |否|
 
 注意：
 1. mongodb_version, mongodb_remote  的值在 mongodb.yml 中由用户选择输入；
