@@ -12,8 +12,6 @@
   when: ansible_os_family == 'Debian'
 
 #3 configure     
-- name: Clean old data
-  shell: rm -rf /data/mongo/*
 
 - name: Enable MongoDB authorization
   lineinfile:
