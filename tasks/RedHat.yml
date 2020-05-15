@@ -1,5 +1,4 @@
 ---
-
 - set fact:
     mongodb_cmd_endstr: "{{mongodb_server_meta[mongodb_server].name}}"
     mongodb_url_endstr: "{{mongodb_server_meta[mongodb_server].url}}"
@@ -12,7 +11,6 @@
     mongodb_baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}}/{{mongodb_url_endstr}}/
   when: ansible_distribution == 'Amazon'
 
-  
 - name: Yum configure the MongdoDB -{{mongodb_server}}-{{mongodb_version}}
   yum_repository:
     name: mongodb-{{mongodb_cmd_endstr}}-{{mongodb_version}}
