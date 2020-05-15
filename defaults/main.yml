@@ -5,3 +5,17 @@
 
 mongodb_version: "4.0"    
 mongodb_root_password: "123456"
+
+# community | enterprise
+mongodb_server: "community"
+
+mongodb_meta_redhat:
+    server:
+      community:
+        name: "org"
+        url: "x86_64"
+      enterprise:
+        name: "enterprise"
+        url: "$basearch"
+        
+    
