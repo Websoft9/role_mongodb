@@ -12,11 +12,6 @@
   when: ansible_os_family == 'Debian'
 
 #3 configure     
-- name: Copy MongoDB Configuration
-  copy: 
-    src: mongod.conf
-    dest: /etc/
-
 - name: Clean old data
   shell: rm -rf /data/mongo/*
 
