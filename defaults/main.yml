@@ -7,6 +7,7 @@
 # Ubuntu16.04 xenial 支持所有 3.0 3.2 3.4 3.6 4.0 4.2...
 # RedHat&AmazonLinux MongoDB3.0 及以下 gpgcheck=0，Ubuntu没有这个问题
 
+
 mongodb_version: "4.0"    
 mongodb_root_password: "123456"
 
@@ -17,8 +18,10 @@ mongodb_server_meta:
   community:
     name: "org"
     url: "x86_64"
+    dns: "org"
   enterprise:
     name: "enterprise"
     url: "$basearch"
+    dns: "com"
         
     
