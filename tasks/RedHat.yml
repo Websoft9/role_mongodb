@@ -1,40 +1,31 @@
 ---
+
 - set fact:
-    mongodb_baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/{{mongodb_version}}/x86_64/
+    mongodb_cmd_endstr: "{{mongodb_server_meta[mongodb_server].name}}"
+    mongodb_url_endstr: "{{mongodb_server_meta[mongodb_server].url}}"
+    
+- set fact:
+    mongodb_baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}}/{{mongodb_url_endstr}}/
   when: ansible_distribution != 'Amazon'
 
 - set fact:
-    mongodb_baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-org/{{mongodb_version}}/x86_64/
+    mongodb_baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}}/{{mongodb_url_endstr}}/
   when: ansible_distribution == 'Amazon'
 
-- set fact:
-    mongodb_cmd: "{{mongodb_server_meta[mongodb_server].name}}"
-  when: ansible_distribution == 'Amazon'
   
-- name: Yum Install the MongdoDB -{{mongodb_server}}-{{mongodb_version}}
+- name: Yum configure the MongdoDB -{{mongodb_server}}-{{mongodb_version}}
   yum_repository:
-    name: mongodb-{{mongodb_server}}-{{mongodb_version}}
+    name: mongodb-{{mongodb_cmd_endstr}}-{{mongodb_version}}
     description: mongodb {{mongodb_server}} {{mongodb_version}}
-    file: mongodb-org-{{mongodb_version}}
-    baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/{{mongodb_version}}/x86_64/
+    file: mongodb-{{mongodb_cmd_endstr}}-{{mongodb_version}}
+    baseurl: "{{mongodb_baseurl}}"
     gpgkey: https://www.mongodb.org/static/pgp/server-{{mongodb_version}}.asc
     gpgcheck: yes
     enabled: yes
-  
-- name: Install the repository RPM
-  yum_repository:
-    name: mongodb-org-{{mongodb_version}}
-    description: mongodb {{mongodb_version}}
-    file: mongodb-org-{{mongodb_version}}
-    baseurl: https://repo.mongodb.org/yum/redhat/7/mongodb-org/{{mongodb_version}}/x86_64/
-    gpgkey: https://www.mongodb.org/static/pgp/server-{{mongodb_version}}.asc
-    gpgcheck: yes
-    enabled: yes
-  when: ansible_distribution == 'Amazon'
 
-- name: Install MongoDB{{mongodb_version}}
+- name: Yum install MongdoDB
   yum: 
-    name: [mongodb-org]
+    name: mongodb-{{mongodb_cmd_endstr}}
     state: latest
     
 - name: Create Databases Directory
