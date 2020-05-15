@@ -65,4 +65,7 @@ Ansible Role: mongodb
 
 ## FAQ
 
+#### 支持哪些版本的MongoDB？
+
+主要是在CentOS和Ubuntu上支持 MongoDB Community 和 MongoDB Enterprise
 
