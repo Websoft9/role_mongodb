@@ -1,14 +1,14 @@
 ---
-- set fact:
+- set_fact:
     mongodb_cmd_endstr: "{{mongodb_server_meta[mongodb_server].name}}"
     mongodb_url_endstr: "{{mongodb_server_meta[mongodb_server].url}}"
     mongodb_dns_endstr: "{{mongodb_server_meta[mongodb_server].dns}}"
     
-- set fact:
+- set_fact:
     mongodb_baseurl: https://repo.mongodb.{{mongodb_dns_endstr}}/yum/redhat/$releasever/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}}/{{mongodb_url_endstr}}/
   when: ansible_distribution != 'Amazon'
 
-- set fact:
+- set_fact:
     mongodb_baseurl: https://repo.mongodb.{{mongodb_dns_endstr}}/yum/amazon/2/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}}/{{mongodb_url_endstr}}/
   when: ansible_distribution == 'Amazon'
 
