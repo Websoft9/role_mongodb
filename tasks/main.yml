@@ -33,7 +33,7 @@
       password: '{{mongodb_root_password}}'
       roles: 'root'
       state: present
-      update_password: alway
+      update_password: always
   when: mongodb_authentication
 
 - block:
