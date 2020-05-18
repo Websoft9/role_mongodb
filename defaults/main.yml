@@ -10,6 +10,7 @@
 
 mongodb_version: "4.0"    
 mongodb_root_password: "123456"
+mongodb_authentication: False
 
 # community | enterprise
 mongodb_server: "community"
