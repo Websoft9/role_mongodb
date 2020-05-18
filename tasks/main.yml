@@ -18,8 +18,8 @@
       path: /etc/mongod.conf
       insertafter: "#security:"
       block: |
-        "security:"
-        "  authorization: enabled"
+        security:
+          authorization: enabled
  
   - name: Restart MongoDB service
     service:
