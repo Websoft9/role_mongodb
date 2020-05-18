@@ -12,8 +12,8 @@ mongodb_version: "4.0"
 mongodb_root_password: "123456"
 
 # when enable authentication, it will create a administrator user root
-mongodb_authentication: True
-mongodb_remote: True
+mongodb_authentication: False
+mongodb_remote: False
 
 # community | enterprise
 mongodb_server: "community"
