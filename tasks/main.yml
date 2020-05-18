@@ -37,7 +37,7 @@
   when: mongodb_authentication
 
 - block:
-  - name: Enable MongoDB authorization
+  - name: Enable MongoDB remote connection
     replace:
       path: /etc/mongod.conf
       regexp: 'bindIp: 127.0.0.1'
