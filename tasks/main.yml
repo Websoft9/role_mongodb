@@ -36,7 +36,7 @@
       update_password: alway
   when: mongodb_authentication
 
-- block: Enable remote connection
+- block:
   - name: Enable MongoDB authorization
     replace:
       path: /etc/mongod.conf
