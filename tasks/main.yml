@@ -14,11 +14,13 @@
 #3 configure     
 - block:
   - name: Enable MongoDB authorization
-    lineinfile:
+    blockinfile:
       path: /etc/mongod.conf
-      regexp: '  authorization: disabled'
-      line: '  authorization: enabled'
-
+      insertafter: "#security:"
+      block: |
+        "security:"
+        "  authorization: enabled"
+ 
   - name: Restart MongoDB service
     service:
       name:  mongod
@@ -33,6 +35,15 @@
       state: present
       update_password: alway
   when: mongodb_authentication
+
+- block: Enable remote connection
+  - name: Enable MongoDB authorization
+    replace:
+      path: /etc/mongod.conf
+      regexp: 'bindIp: 127.0.0.1'
+      replace: 'bindIp: 0.0.0.0'
+      
+  when: mongodb_remote
 
 - name: Start and enable MongoDB service
   service:
