@@ -12,27 +12,28 @@
   when: ansible_os_family == 'Debian'
 
 #3 configure     
+- block:
+  - name: Enable MongoDB authorization
+    lineinfile:
+      path: /etc/mongod.conf
+      regexp: '  authorization: disabled'
+      line: '  authorization: enabled'
 
-- name: Enable MongoDB authorization
-  lineinfile:
-    path: /etc/mongod.conf
-    regexp: '  authorization: disabled'
-    line: '  authorization: enabled'
+  - name: Start and enable MongoDB service
+    service:
+      name:  mongod
+      enabled: yes 
+      state: started 
 
-- name: Start and enable MongoDB service
-  service:
-    name:  mongod
-    enabled: yes 
-    state: started 
-
-- name: Setting MongoDB Administrator User
-  mongodb_user:
-    database: admin
-    name: root
-    password: '{{mongodb_root_password}}'
-    roles: 'dbAdminAnyDatabase'
-    state: present
-    update_password: always
+  - name: Setting MongoDB Administrator User
+    mongodb_user:
+      database: admin
+      name: root
+      password: '{{mongodb_root_password}}'
+      roles: 'dbAdminAnyDatabase'
+      state: present
+      update_password: alway
+  when: dd
 
 - name: Add soft link for Mongod directory
   shell: |
