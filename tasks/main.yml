@@ -19,22 +19,26 @@
       regexp: '  authorization: disabled'
       line: '  authorization: enabled'
 
-  - name: Start and enable MongoDB service
+  - name: Restart MongoDB service
     service:
       name:  mongod
-      enabled: yes 
-      state: started 
+      state: restarted 
 
   - name: Setting MongoDB Administrator User
     mongodb_user:
       database: admin
       name: root
       password: '{{mongodb_root_password}}'
-      roles: 'dbAdminAnyDatabase'
+      roles: 'root'
       state: present
       update_password: alway
-  when: dd
+  when: mongodb_authentication
 
+- name: Start and enable MongoDB service
+  service:
+    name:  mongod
+    enabled: yes 
+    
 - name: Add soft link for Mongod directory
   shell: |
     ln -sb /etc/mongod.conf  /data/config/mongod.conf
