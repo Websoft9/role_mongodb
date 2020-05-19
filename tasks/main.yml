@@ -67,6 +67,7 @@
   service:
     name:  mongod
     enabled: yes 
+    state: started 
     
 - name: Add soft link for Mongod directory
   shell: |
