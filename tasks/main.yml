@@ -5,7 +5,9 @@
     name: pymongo
 
 - name: Remove the old data of MongoDB
-  shell: rm -rf /var/lib/mongo/*
+  shell: |
+    rm -rf /var/lib/mongo/*
+    rm -rf /etc/mongod.conf
     
 #2 install by OS family    
 - import_tasks: RedHat.yml
