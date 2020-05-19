@@ -18,9 +18,7 @@
     enabled: yes
 
 - name: Yum install MongdoDB
-  yum: 
-    name: mongodb-{{mongodb_cmd_endstr}}
-    state: latest
+  shell: yum install mongodb-{{mongodb_cmd_endstr}} -y
     
 - name: Create Databases Directory
   file:
