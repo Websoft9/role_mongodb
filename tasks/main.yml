@@ -30,7 +30,7 @@
   - name: Restart MongoDB service
     service:
       name:  mongod
-      state: restarted 
+      state: started 
 
   - name: Setting MongoDB Administrator User
     mongodb_user:
