@@ -19,6 +19,7 @@
   shell: |
     systemctl stop mongod
     service mongod stop
+    rm -rf /var/lib/mongo*
     
 #2 install by OS family    
 - include: "{{ansible_os_family}}.yml"
