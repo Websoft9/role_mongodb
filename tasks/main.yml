@@ -68,7 +68,7 @@
 - name: Add soft link for Mongod directory
   shell: |
     ln -sb /etc/mongod.conf  /data/config/mongod.conf
-    ln -sb /var/lib/mongo  /data/mongodb/data
+    ln -sb /var/lib/mongodb  /data/mongodb/data
     ln -sb /var/log/mongodb  /data/logs/mongodb
 
 #5 display version and service state of components
