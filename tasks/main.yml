@@ -4,7 +4,7 @@
   pip:
     name: pymongo
 
-- name: Remove the old data of MongoDB
+- name: Remove the old data of MongoDB for re-install
   shell: |
     rm -rf /var/lib/mongo/*
     rm -rf /etc/mongod.conf
