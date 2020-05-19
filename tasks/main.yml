@@ -14,11 +14,6 @@
     mongodb_cmd_endstr: "{{mongodb_server_meta[mongodb_server].name}}"
     mongodb_url_endstr: "{{mongodb_server_meta[mongodb_server].url}}"
     mongodb_dns_endstr: "{{mongodb_server_meta[mongodb_server].dns}}"
-
-- name: Remove the old data of MongoDB for re-install
-  shell: |
-    systemctl stop mongod
-    service mongod stop
     
 #2 install by OS family    
 - include: "{{ansible_os_family}}.yml"
