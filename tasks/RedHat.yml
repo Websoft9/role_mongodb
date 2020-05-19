@@ -17,6 +17,11 @@
     gpgcheck: yes
     enabled: yes
 
+- name: Remove old package
+  yum:
+    name: mongodb-{{mongodb_cmd_endstr}}
+    state: absent
+
 - name: Yum install MongdoDB
   shell: yum install mongodb-{{mongodb_cmd_endstr}} -y
     
