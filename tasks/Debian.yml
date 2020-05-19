@@ -1,7 +1,3 @@
-- set_fact:
-    mongodb_cmd_endstr: "{{mongodb_server_meta[mongodb_server].name}}"
-    mongodb_dns_endstr: "{{mongodb_server_meta[mongodb_server].dns}}"
-    
 - name: Import the public key used by the package management system
   apt_key:
     url: https://www.mongodb.org/static/pgp/server-{{mongodb_version}}.asc
