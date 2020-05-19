@@ -21,7 +21,6 @@
     service mongod stop
     rm -rf /var/lib/mongo
     rm -rf /var/lib/logs
-    rm -rf /etc/mongod.conf
     
 #2 install by OS family    
 - include: "{{ansible_os_family}}.yml"
@@ -35,6 +34,9 @@
 
   - name: Setting MongoDB Administrator User
     mongodb_user:
+      login_database: admin
+      login_password: '{{mongodb_root_password}}'
+      login_user: root
       database: admin
       name: root
       password: '{{mongodb_root_password}}'
