@@ -15,15 +15,7 @@
   when: ansible_os_family == 'Debian'
 
 #3 configure     
-- block:
-  - name: Enable MongoDB authorization
-    blockinfile:
-      path: /etc/mongod.conf
-      insertafter: "#security:"
-      block: |
-        security:
-          authorization: enabled
- 
+- block: 
   - name: Restart MongoDB service
     service:
       name:  mongod
@@ -37,6 +29,15 @@
       roles: 'root'
       state: present
       update_password: always
+   
+  - name: Enable MongoDB authorization
+    blockinfile:
+      path: /etc/mongod.conf
+      insertafter: "#security:"
+      block: |
+        security:
+          authorization: enabled
+          
   when: mongodb_authentication
 
 - block:
