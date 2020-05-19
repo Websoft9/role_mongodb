@@ -24,7 +24,7 @@
     
 - name: Create Databases Directory
   file:
-    path: /data/mongo
+    path: /data/mongodb
     state: directory
     owner: mongod
     group: mongod
