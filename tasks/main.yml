@@ -3,6 +3,12 @@
 - name: Install pymongo for Ansible MongoDB module
   pip:
     name: pymongo
+
+- name: Create /data/db directory for Mongod script
+  file:
+    path: /data/db
+    state: directory
+    mode: '0750'
     
 - set_fact:
     mongodb_cmd_endstr: "{{mongodb_server_meta[mongodb_server].name}}"
