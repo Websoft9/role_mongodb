@@ -13,7 +13,8 @@
   shell: |
     systemctl stop mongod
     service mongod stop
-    rm -rf /var/lib/mongo/*
+    rm -rf /var/lib/mongo
+    rm -rf /var/lib/logs
     rm -rf /etc/mongod.conf
     
 - name: unintall mongodb
