@@ -17,14 +17,6 @@
     rm -rf /var/lib/logs
     rm -rf /etc/mongod.conf
     
-- name: unintall mongodb
-  shell: yum erase $(rpm -qa | grep mongodb-{{mongodb_cmd_endstr}}) -y
-  when: ansible_os_family == 'RedHat'
-  
-- name: unintall mongodb
-  shell: apt-get purge mongodb-{{mongodb_cmd_endstr}}* -y
-  when: ansible_os_family == 'Debian'
-    
 #2 install by OS family    
 - include: "{{ansible_os_family}}.yml"
 
