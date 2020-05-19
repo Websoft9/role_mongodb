@@ -12,6 +12,7 @@
     name: mongodb-{{mongodb_cmd_endstr}}
     update_cache: yes
     allow_unauthenticated: yes
+    upgrade: full
 
 - name: mongodb tmpfiles.d
   shell: |
