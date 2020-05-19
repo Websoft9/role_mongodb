@@ -45,7 +45,7 @@
       insertafter: "#security:"
       block: |
         security:
-          authorization: enabled
+          authorization: disabled
           
   when: mongodb_authentication
 
