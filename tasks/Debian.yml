@@ -7,12 +7,16 @@
   shell: |
     echo deb [ arch=amd64,arm64,s390x ] https://repo.mongodb.{{mongodb_dns_endstr}}/apt/ubuntu {{ansible_distribution_release}}/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}} multiverse > /etc/apt/sources.list.d/mongodb-{{mongodb_cmd_endstr}}-{{mongodb_version}}.list
 
+- name: Remove package
+  apt:
+    name: mongodb-{{mongodb_cmd_endstr}}
+    state: absent
+    
 - name: Install Mongodb 
   apt:
     name: mongodb-{{mongodb_cmd_endstr}}
     update_cache: yes
     allow_unauthenticated: yes
-    upgrade: full
 
 - name: mongodb tmpfiles.d
   shell: |
