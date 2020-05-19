@@ -13,10 +13,7 @@
     state: absent
     
 - name: Install Mongodb 
-  apt:
-    name: mongodb-{{mongodb_cmd_endstr}}
-    update_cache: yes
-    allow_unauthenticated: yes
+  shell: apt install mongodb-{{mongodb_cmd_endstr}}
 
 - name: mongodb tmpfiles.d
   shell: |
