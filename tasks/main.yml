@@ -6,8 +6,18 @@
 
 - name: Remove the old data of MongoDB for re-install
   shell: |
+    systemctl stop mongod
+    service mongod stop
     rm -rf /var/lib/mongo/*
     rm -rf /etc/mongod.conf
+    
+- name: unintall mongodb
+  shell: yum erase $(rpm -qa | grep mongodb-org)
+  when: ansible_os_family == 'RedHat'
+  
+- name: unintall mongodb
+  shell: apt-get purge mongodb-org*
+  when: ansible_os_family == 'Debian'
     
 #2 install by OS family    
 - import_tasks: RedHat.yml
