@@ -13,7 +13,9 @@
     state: absent
     
 - name: Install Mongodb 
-  shell: apt install mongodb-{{mongodb_cmd_endstr}} -y
+  shell: |
+    apt-get update
+    apt-get install mongodb-{{mongodb_cmd_endstr}} -y
 
 - name: mongodb tmpfiles.d
   shell: |
