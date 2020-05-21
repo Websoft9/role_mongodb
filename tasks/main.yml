@@ -28,7 +28,7 @@
   - name: Setting MongoDB Administrator User
     mongodb_user:
       database: admin
-      name: root
+      name: "{{mongodb_root_username}}"
       password: '{{mongodb_root_password}}'
       roles: 'root'
       state: present
