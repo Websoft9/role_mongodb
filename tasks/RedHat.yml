@@ -25,9 +25,16 @@
 - name: Yum install MongdoDB
   shell: yum install mongodb-{{mongodb_cmd_endstr}} -y
     
-- name: Create Databases Directory
+- name: Create Databases Directory /data/mongodb
   file:
     path: /data/mongodb
+    state: directory
+    owner: mongod
+    group: mongod
+    
+- name: Create Databases Directory /data/db
+  file:
+    path: /data/db
     state: directory
     owner: mongod
     group: mongod
