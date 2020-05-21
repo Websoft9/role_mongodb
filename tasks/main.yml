@@ -20,6 +20,9 @@
 
 #3 configure     
 - block: 
+  - name: Reload daemon-reload
+    shell: systemctl daemon-reload
+    
   - name: Restart MongoDB service
     service:
       name:  mongod
