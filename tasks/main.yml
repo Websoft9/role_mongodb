@@ -32,7 +32,7 @@
     mongodb_user:
       database: admin
       name: "{{mongodb_root_username}}"
-      password: '{{mongodb_root_password}}'
+      password: "{{mongodb_root_password}}"
       roles: 'root'
       state: present
       update_password: always
