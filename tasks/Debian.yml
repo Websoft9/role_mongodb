@@ -22,9 +22,16 @@
     echo 'd /var/run/mongodb/ 0755 mongodb mongodb' > /etc/tmpfiles.d/mongodb.conf
     systemd-tmpfiles --create
 
-- name: Create  Directory
+- name: Create  Directory /data/mongodb
   file:
     path: /data/mongodb
+    state: directory
+    owner: mongodb
+    group: mongodb
+    
+- name: Create  Directory /data/db
+  file:
+    path: /data/db
     state: directory
     owner: mongodb
     group: mongodb
