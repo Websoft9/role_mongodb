@@ -66,8 +66,8 @@
   shell: |
     ln -sf /etc/mongod.conf  /data/mongodb
     if [ -d "/var/lib/mongodb" ]; then ln -sf /var/lib/mongodb  /data/mongodb; fi
-    if [ -d "/var/lib/mongo" ]; then ln -sf /var/lib/mongo  /data/mongodb/data; fi
-    ln -sf /var/log/mongodb  /data/mongodb/log
+    if [ -d "/var/lib/mongo" ]; then ln -sf /var/lib/mongo  /data/mongodb; fi
+    ln -sf /var/log/mongodb  /data/logs
 
 #5 display version and service state of components
 - name: Get MongoDB version
