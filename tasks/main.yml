@@ -64,10 +64,10 @@
     
 - name: Add soft link for Mongod directory
   shell: |
-    ln -sb /etc/mongod.conf  /data/mongodb/mongod.conf
-    if [ -d "/var/lib/mongodb" ]; then ln -sb /var/lib/mongodb  /data/mongodb/data; fi
-    if [ -d "/var/lib/mongo" ]; then ln -sb /var/lib/mongo  /data/mongodb/data; fi
-    ln -sb /var/log/mongodb  /data/mongodb/log
+    ln -sf /etc/mongod.conf  /data/mongodb
+    if [ -d "/var/lib/mongodb" ]; then ln -sf /var/lib/mongodb  /data/mongodb; fi
+    if [ -d "/var/lib/mongo" ]; then ln -sf /var/lib/mongo  /data/mongodb/data; fi
+    ln -sf /var/log/mongodb  /data/mongodb/log
 
 #5 display version and service state of components
 - name: Get MongoDB version
