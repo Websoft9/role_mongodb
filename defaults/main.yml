@@ -19,6 +19,13 @@ mongodb_remote: False
 # community | enterprise
 mongodb_server: "community"
 
+# add databases and users
+mongodb_users: []
+#  - name: graylog
+#    database_name: graylog
+#    password: "123456"
+#    roles: readWrite
+
 mongodb_server_meta:
   community:
     name: "org"
