@@ -55,6 +55,18 @@
       replace: 'bindIp: 0.0.0.0'
       
   when: mongodb_remote
+  
+- name: Create extra database and user
+  mongodb_user:
+    login_user: root
+    login_password: '{{mongodb_root_password}}'
+    login_database: admin
+    database: "{{ item.database_name }}"
+    name: "{{ item.user_name }}"
+    roles: "{{ item.roles }}"
+    password: "{{ item.password | default('123456',true) }}"
+  with_items: "{{ mongodb_users }}"
+  when: (mongodb_users is defined) and (mongodb_users != none)
 
 - name: Start and enable MongoDB service
   service:
