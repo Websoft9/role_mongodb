@@ -62,8 +62,8 @@
     login_password: '{{mongodb_root_password}}'
     login_database: admin
     database: "{{ item.database_name }}"
-    name: "{{ item.user_name }}"
-    roles: "{{ item.roles }}"
+    name: "{{ item.name }}"
+    roles: "{{ item.roles | default('readWrite',true) }}"
     password: "{{ item.password | default('123456',true) }}"
   with_items: "{{ mongodb_users }}"
   when: (mongodb_users is defined) and (mongodb_users != none)
