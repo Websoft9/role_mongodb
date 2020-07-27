@@ -28,14 +28,7 @@
       name:  mongod
       state: started 
 
-  - name: Setting MongoDB Administrator User
-    mongodb_user:
-      database: admin
-      name: "{{mongodb_root_username}}"
-      password: "{{mongodb_root_password}}"
-      roles: 'root'
-      state: present
-      update_password: always
+
    
   - name: Enable MongoDB authorization
     blockinfile:
@@ -44,18 +37,25 @@
       block: |
         security:
           authorization: disabled
-          
-  when: mongodb_authentication
+    when: mongodb_authentication or mongodb_remote
 
 - block:
   - name: Enable MongoDB remote connection
     replace:
       path: /etc/mongod.conf
       regexp: 'bindIp: 127.0.0.1'
-      replace: 'bindIp: 0.0.0.0'
-      
+      replace: 'bindIp: 0.0.0.0'     
   when: mongodb_remote
-  
+
+- name: Setting MongoDB Administrator User
+  mongodb_user:
+    database: admin
+    name: "{{mongodb_root_username}}"
+    password: "{{mongodb_root_password}}"
+    roles: 'root'
+    state: present
+    update_password: always
+	
 - name: Create extra database and user
   mongodb_user:
     login_user: root
