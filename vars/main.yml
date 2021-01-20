@@ -1,0 +1,11 @@
+mongodb_server_meta:
+  community:
+    name: "org"
+    url: "x86_64"
+    dns: "org"
+  enterprise:
+    name: "enterprise"
+    url: "$basearch"
+    dns: "com"
+        
+    
