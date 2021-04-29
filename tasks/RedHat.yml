@@ -7,10 +7,6 @@
     mongodb_baseurl: https://repo.mongodb.{{mongodb_dns_endstr}}/yum/redhat/7/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}}/{{mongodb_url_endstr}}/
   when: ansible_distribution == 'Amazon' 
  
-- set_fact:
-    mongodb_baseurl: https://repo.mongodb.{{mongodb_dns_endstr}}/yum/redhat/7/mongodb-{{mongodb_cmd_endstr}}/{{mongodb_version}}/{{mongodb_url_endstr}}/
-  when: ansible_distribution == 'Amazon' and mongodb_version >= "4.0"
-
 - name: Yum configure the MongdoDB -{{mongodb_server}}-{{mongodb_version}}
   yum_repository:
     name: mongodb-{{mongodb_cmd_endstr}}-{{mongodb_version}}
