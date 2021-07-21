@@ -37,7 +37,7 @@
       '8': '4.0'
       '9': '4.2'
       '10': '4.4'
-    mongodb_version: "{{mongodb_select[mongodb_version_selection]}}"
+    mongodb_version: "{{mongodb_version_select[mongodb_version_selection]}}"
     mongodb_root_password: "{{mongodb_input_password}}"
 
   pre_tasks:
