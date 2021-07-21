@@ -64,6 +64,12 @@ Ansible Role: mongodb
    - {role: role_end, tags: "role_end"} 
 ```
 
+## Installation
+
+```
+git clone https://github.com/Websoft9/role_mongodb.git
+ansible-playbook role_mongodb/tests/test.yml
+```
 ## FAQ
 
 #### 支持哪些版本的MongoDB？
