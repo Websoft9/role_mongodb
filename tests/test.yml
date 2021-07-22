@@ -12,7 +12,6 @@
       private: no
       default: 1
       
-  vars_prompt:
     - name: 'mongodb_version_selection'
       prompt: "\nPlease choose the number for MongoDB version [ 1/2/../10] \n\n
       1: MongoDB3.0(support Ubuntu16 and redhat)\n
