@@ -4,14 +4,7 @@
   roles:
     - role_mongodb
     
-  vars_prompt:
-    - name: 'mongodb_edition_selection'
-      prompt: "\nPlease choose the number for MongoDB edition [ 1/2/] \n\n
-      1: MongoDB community \n
-      2: MongoDB enterprise \n"
-      private: no
-      default: 1
-      
+  vars_prompt:   
     - name: 'mongodb_version_selection'
       prompt: "\nPlease choose the number for MongoDB version [ 1/2/../10] \n\n
       1: MongoDB3.0(support Ubuntu16 and redhat)\n
@@ -26,6 +19,13 @@
       10: MongoDB4.4(support Ubuntu16|18|20 and redhat)\n"
       private: no
       default: 10
+      
+    - name: 'mongodb_edition_selection'
+      prompt: "\nMongoDB Community or MongoDB Enterprise? [ 1/2/] \n\n
+      1: MongoDB community \n
+      2: MongoDB enterprise \n"
+      private: no
+      default: 1
 
     - name: 'mongodb_input_password'
       prompt: "\nPlease your MongoDB root password: \n\ndefault"
