@@ -55,7 +55,7 @@
   pre_tasks:
     - debug:
         msg: Will install MongoDB {{mongodb_server}} {{mongodb_version}}
-
+        
   post_tasks:
     - name: pre_post
       debug:
