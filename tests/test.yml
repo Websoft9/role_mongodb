@@ -17,6 +17,7 @@
       8: MongoDB4.0(support Ubuntu16|18 and redhat)\n
       9: MongoDB4.2(support Ubuntu16|18 and redhat)\n
       10: MongoDB4.4(support Ubuntu16|18|20 and redhat)\n"
+      11: MongoDB5.0(support Ubuntu16|18|20 and redhat)\n"
       private: no
       default: 10
       
@@ -47,6 +48,7 @@
       '8': '4.0'
       '9': '4.2'
       '10': '4.4'
+      '10': '5.0'
     mongodb_server: "{{mongodb_edition_select[mongodb_edition_selection]}}"
     mongodb_version: "{{mongodb_version_select[mongodb_version_selection]}}"
     mongodb_root_password: "{{mongodb_input_password}}"
