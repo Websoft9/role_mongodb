@@ -14,7 +14,7 @@ mongodb_root_username: "root"
 
 # when enable authentication, it will create a administrator user root
 mongodb_authentication: False
-mongodb_remote: False
+mongodb_remote: true
 
 # community | enterprise
 mongodb_server: "community"
