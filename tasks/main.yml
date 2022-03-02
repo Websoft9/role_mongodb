@@ -2,7 +2,7 @@
 #1 pre-installation
 - name: Install pymongo for Ansible MongoDB module
   pip:
-    name: pymongo
+    name: pymongo<4
 
 - name: Create /data/db directory for Mongod script
   file:
